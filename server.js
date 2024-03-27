@@ -12,7 +12,10 @@ const app=express()
 
 const employeeRoutes=require('./routes/empoyeeRoutes')
 
+const signupRoutes=require('./routes/signupRoutes')
+
 const ejs=require('ejs')
+
 
 dotenv.config()
 
@@ -31,7 +34,7 @@ app.get('/mango',(req,res)=>{
 
 //server side rendering
 app.get('/grapes',(req,res)=>{
-    res.render('samplePage')
+    res.render('sample')
     // res.send("<h1>This is Grapes Fruit</h1>")
 
 })
@@ -52,6 +55,7 @@ mongoose.connect(process.env.MONGO_URI).then(()=>{
 const PORT=process.env.PORT || 5000
 
 app.use('/employees',employeeRoutes)
+app.use('/signup',signupRoutes)
 
 app.listen(PORT,()=>{
     console.log('Server Started')
