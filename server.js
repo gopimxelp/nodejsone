@@ -12,9 +12,33 @@ const app=express()
 
 const employeeRoutes=require('./routes/empoyeeRoutes')
 
+const ejs=require('ejs')
+
 dotenv.config()
 
 app.use(bodyParser.json())
+
+app.set('view engine','ejs')
+
+
+//client side rendering
+app.get('/mango',(req,res)=>{
+    res.json({
+        fruit:"mango"
+    })
+
+})
+
+//server side rendering
+app.get('/grapes',(req,res)=>{
+    res.render('samplePage')
+    // res.send("<h1>This is Grapes Fruit</h1>")
+
+})
+
+//htl css
+//template engines
+//ejs
 
 mongoose.connect(process.env.MONGO_URI).then(()=>{
     console.log("Mongodb Connected Succesfully ")

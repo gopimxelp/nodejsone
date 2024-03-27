@@ -12,7 +12,7 @@ const createEmployee=async(req,res)=>{
         res.status(201).json(employee)
     }
     catch(error){
-        console.log("error is occured",error)
+        console.log("error is occured ",error)
         res.status(500).json({
             message:'Server error'
         })
